@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tín Chỉ Carbon</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+      h1 {
+        color: #333;
+      }
+      input {
+        margin: 10px 0;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      button {
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #218838;
+      }
+      #result {
+        margin-top: 15px;
+        font-weight: bold;
+        color: #005cbf;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tín Chỉ Carbon</h1>
+    <h2>Đo Lường Rác Thải</h2>
+    <label for="wasteAmount">Nhập lượng rác thải (kg):</label>
+    <input type="number" id="wasteAmount" placeholder="Nhập số kg" />
+    <button onclick="calculateCarbonCredits()">Tính Tín Chỉ Carbon</button>
+    <h3 id="result"></h3>
+
+    <script>
+      function calculateCarbonCredits() {
+        const wasteAmount = parseFloat(
+          document.getElementById("wasteAmount").value
+        );
+        if (isNaN(wasteAmount) || wasteAmount < 0) {
+          document.getElementById("result").innerText =
+            "Vui lòng nhập số hợp lệ (>= 0).";
+          return;
+        }
+        const carbonCredits = wasteAmount * 0.001; // 1 kg rác = 0.001 tín chỉ carbon
+        document.getElementById(
+          "result"
+        ).innerText = `Số lượng tín chỉ carbon tương ứng: ${carbonCredits.toFixed(
+          3
+        )}`;
+      }
+    </script>
+  </body>
+</html>
